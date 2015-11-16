@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="BLEProgrammaticPairingSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GATTExplorer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <ListBox x:Name="DeviceListBox" 
+               SelectionMode="Single"
+               Margin="50">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <TextBlock Text="{Binding Name}" Margin="5" />
+              <TextBlock Text="{Binding Path=DeviceInformation.Pairing.IsPaired}" Grid.Column="1" Margin="5" />
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <StackPanel Grid.Row="1" Margin="50" Orientation="Horizontal">
+        <Button x:Name="PairButton" Click="PairButton_OnClick" Margin="5">Pair</Button>
+        <Button x:Name="UnpairButton" Click="UnpairButton_OnClick" Margin="5">Unpair</Button>
+      </StackPanel>
+    </Grid>
+</Page>
